@@ -103,25 +103,25 @@ import json
 # Статистика должна включать в себя количество отфильтрованных транзакций
 # и их суммарную стоимость.
 
-def transaction_filtering(json_file, type_currency):
-    with open(json_file) as file:
-        data = json.load(file)
-    new_json = [i for i in data if i.get("currency") == type_currency]
-
-    with open("filter_transactions.json", "w") as file:
-        json.dump(new_json, file)
-    return new_json
-
-print(transaction_filtering("transactions.json", "USD"))
+# def transaction_filtering(json_file, type_currency):
+#     with open(json_file) as file:
+#         data = json.load(file)
+#     new_json = [i for i in data if i.get("currency") == type_currency]
+#
+#     with open("filter_transactions.json", "w") as file:
+#         json.dump(new_json, file)
+#     return new_json
+#
+# print(transaction_filtering("transactions.json", "USD"))
 ###########################################################################
-def stat_decorator(func):
-    """Декоратор для вывода статистики по отфильтрованным транзакциям."""
-
-    def wrapper(*args, **kwargs):
-        filtered_transactions = func(*args, **kwargs)
-        total_amount = sum([transaction['amount'] for transaction in filtered_transactions])
-        print(f"Отфильтровано {len(filtered_transactions)} транзакций на сумму {total_amount}")
-        return filtered_transactions
-
-    return wrapper
+# def stat_decorator(func):
+#     """Декоратор для вывода статистики по отфильтрованным транзакциям."""
+#
+#     def wrapper(*args, **kwargs):
+#         filtered_transactions = func(*args, **kwargs)
+#         total_amount = sum([transaction['amount'] for transaction in filtered_transactions])
+#         print(f"Отфильтровано {len(filtered_transactions)} транзакций на сумму {total_amount}")
+#         return filtered_transactions
+#
+#     return wrapper
 ############################################################################
